@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: udplisten
+spec:
+  selector:
+    app: udplisten
+  type: LoadBalancer
+  ports:
+  - protocol: UDP
+    port: 3000
+    targetPort: 3000

@@ -1,0 +1,21 @@
+apiVersion: apps/v1beta1 # for versions before 1.6.0 use extensions/v1beta1
+kind: Deployment
+metadata:
+  name: udplisten
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: udplisten
+    spec:
+      containers:
+      - name: bootnode
+        image: emccmd/udplisten:latest
+        ports:
+        - containerPort: 3000
+        env:
+        - name: IN_IP
+          value: "0.0.0.0"
+        - name: IN_PORT
+          value: "3000"
